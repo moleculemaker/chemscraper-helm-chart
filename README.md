@@ -2,6 +2,11 @@
 Helm chart for running Chemscraper + YOLO + sscraper in a Kubernetes cluster
 
 
+## References
+* Source code branch: [dprl/graphics-extraction](https://gitlab.com/dprl/graphics-extraction/-/tree/mst_parser)
+* Docker Compose recipe: [dprl/dprl-alphasynthesis](https://gitlab.com/dprl/dprl-alphasynthesis)
+
+
 ## WARNING: Large Images
 This recipe uses pre-built images that are **VERY LARGE** (15GB+)
 
@@ -56,7 +61,3 @@ TBD - prod should look almost identical to `staging`, and will be deployed autom
 ## TODOs
 * Create a (Cron?)Job that will prepull the Docker image for yolo
 * Create ArgoCD apps for staging + prod
-
-
-## References
-* Docker Compose recipe: [dprl-alphasynthesis](https://gitlab.com/dprl/dprl-alphasynthesis)
