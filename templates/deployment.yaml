@@ -1,0 +1,38 @@
+# Defines the deployment of the app running in a pod on any worker node
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+  labels:
+    app: chemscraper
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chemscraper
+  template:
+    metadata:
+      labels:
+        app: chemscraper
+    spec:
+      containers:
+        - name: chemscraper
+          image: {{ .Values.controller.images.chemscraper }}
+          env:
+          - name: YOLO_SERVER_NAME
+            value: {{ .Release.Name }}.{{ .Release.Namespace }}.svc.cluster.local
+          - name: SSCRAPER_SERVER_NAME
+            value: {{ .Release.Name }}.{{ .Release.Namespace }}.svc.cluster.local
+          ports:
+            - containerPort: 8000
+#          imagePullPolicy: Always
+        - name: yolo
+          image: {{ .Values.controller.images.yolo }}
+          ports:
+            - containerPort: 7002
+#          imagePullPolicy: Always
+        - name: symbolscraper
+          image: {{ .Values.controller.images.symbolscraper }}
+          ports:
+            - containerPort: 8005
+#          imagePullPolicy: Always

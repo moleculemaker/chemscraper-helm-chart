@@ -1,0 +1,4 @@
+apiVersion: v2
+description: "ChemScraper + YOLO + sscraper"
+name: chemscraper
+version: 1.0.0

@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}
+spec:
+  selector:
+    app: chemscraper
+  type: ClusterIP
+  ports:
+    - name: chemscraper
+      protocol: TCP
+      port: 8000
+      targetPort: 8000
+    - name: yolo
+      protocol: TCP
+      port: 7002
+      targetPort: 7002
+    - name: symbolscraper
+      protocol: TCP
+      port: 8005
+      targetPort: 8005

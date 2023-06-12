@@ -1,0 +1,52 @@
+# Enables the pods in a deployment to be accessible from outside the cluster
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: chemscraper
+{{- with .Values.ingress.annotations }}
+  annotations:
+  {{ toYaml . | nindent 4 }}
+{{- end }}
+spec:
+{{- if .Values.ingress.tls }}
+  tls:
+  - hosts:
+    - {{ .Values.ingress.hostname }}
+    - yolo.{{ .Values.ingress.hostname }}
+    - symbolscraper.{{ .Values.ingress.hostname }}
+    secretName: {{ .Values.ingress.hostname }}-tls
+{{- end }}
+{{- if .Values.ingress.ingressClassName }}
+  ingressClassName: {{ .Values.ingress.ingressClassName }}
+{{- end }}
+  rules:
+  - host: {{ .Values.ingress.hostname | required "required: ingress.hostname (e.g. chemscraper.backend.localhost)" }}
+    http:
+      paths:
+      - backend:
+          service:
+            name: {{ .Release.Name }}
+            port:
+              number: 8000
+        path: /
+        pathType: ImplementationSpecific
+  - host: yolo.{{ .Values.ingress.hostname | required "required: ingress.hostname (e.g. chemscraper.backend.localhost)" }}
+    http:
+      paths:
+      - backend:
+          service:
+            name: {{ .Release.Name }}
+            port:
+              number: 7002
+        path: /
+        pathType: ImplementationSpecific
+  - host: symbolscraper.{{ .Values.ingress.hostname | required "required: ingress.hostname (e.g. chemscraper.backend.localhost)" }}
+    http:
+      paths:
+      - backend:
+          service:
+            name: {{ .Release.Name }}
+            port:
+              number: 8005
+        path: /
+        pathType: ImplementationSpecific

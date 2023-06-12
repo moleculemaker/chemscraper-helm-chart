@@ -1,0 +1,21 @@
+ingress:
+  hostname: chemscraper.backend.localhost
+  tls: false
+  annotations: {}
+
+controller:
+  images: 
+    yolo: dprl/yoloserver:latest
+    symbolscraper: dprl/symbolscraper-server:latest
+    chemscraper: dprl/chemscraper:latest
+  
+
+# TODO: config for GPU support
+    #deploy:
+    #  resources:
+    #    reservations:
+    #      devices
+    #        - driver: nvidia
+    #          capabilities: [gpu]
+
+
