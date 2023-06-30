@@ -7,17 +7,6 @@ Helm chart for running Chemscraper + YOLO + sscraper in a Kubernetes cluster
 * Docker Compose recipe: [dprl/dprl-alphasynthesis](https://gitlab.com/dprl/dprl-alphasynthesis)
 
 
-## WARNING: Large Images
-This recipe uses pre-built images that are **VERY LARGE** (15GB+)
-
-We recommend pre-pulling this image to each of your cluster's worker nodes before attempting to install the chart.
-
-To do this, you can SSH into each node and execute the following command:
-```bash
-$ docker pull dprl/yoloserver:latest
-```
-
-
 ## PSA: Always check Pod `AGE` after deploying
 You may need to delete the running Pod to trigger a new Pod to be created with the new config.
 
