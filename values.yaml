@@ -5,9 +5,12 @@ ingress:
 
 controller:
   images: 
-    yolo: dprl/yoloserver:latest
+    yolo: dprl/yolov8server:latest
     symbolscraper: dprl/symbolscraper-server:latest
     chemscraper: dprl/chemscraper:latest
+
+    # LEGACY IMAGE NAME
+    #yolo: dprl/yoloserver:latest
   
 
 # TODO: config for GPU support
