@@ -29,10 +29,10 @@ spec:
         - name: yolo
           image: {{ .Values.controller.images.yolo }}
           ports:
-            - containerPort: 7002
+            - containerPort: 8005
 #          imagePullPolicy: Always
         - name: symbolscraper
           image: {{ .Values.controller.images.symbolscraper }}
           ports:
-            - containerPort: 8005
+            - containerPort: 7002
 #          imagePullPolicy: Always

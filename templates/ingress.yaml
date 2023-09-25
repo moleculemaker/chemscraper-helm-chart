@@ -2,7 +2,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: chemscraper
+  name: {{ .Release.Name }}
 {{- with .Values.ingress.annotations }}
   annotations:
   {{ toYaml . | nindent 4 }}
@@ -37,7 +37,7 @@ spec:
           service:
             name: {{ .Release.Name }}
             port:
-              number: 7002
+              number: 8005
         path: /
         pathType: ImplementationSpecific
   - host: symbolscraper.{{ .Values.ingress.hostname | required "required: ingress.hostname (e.g. chemscraper.backend.localhost)" }}
@@ -47,6 +47,6 @@ spec:
           service:
             name: {{ .Release.Name }}
             port:
-              number: 8005
+              number: 7002
         path: /
         pathType: ImplementationSpecific
