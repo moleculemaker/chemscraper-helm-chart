@@ -7,10 +7,17 @@ controller:
   images: 
     yolo: dprl/yolov8server:latest
     symbolscraper: dprl/symbolscraper-server:latest
-    chemscraper: dprl/chemscraper:latest
+    chemscraper: dprl/chemscraper:v0.1-icdar2024
 
-    # LEGACY IMAGE NAME
+    # DEV IMAGE NAMES
+    #chemscraper: dprl/chemscraper:staging
+
+    # USTABLE IMAGE NAMES
+    #chemscraper: dprl/chemscraper:latest
+
+    # LEGACY IMAGE NAMES
     #yolo: dprl/yoloserver:latest
+    #chemscraper: dprl/chemscraper:json
   
 
 # TODO: config for GPU support
