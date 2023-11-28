@@ -7,3 +7,7 @@ ingress:
     traefik.ingress.kubernetes.io/router.tls: "true"
     traefik.ingress.kubernetes.io/router.middlewares: staging-cors-header@kubernetescrd
 
+controller:
+  images: 
+    chemscraper: dprl/chemscraper:staging
+
