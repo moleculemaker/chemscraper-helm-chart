@@ -3,6 +3,9 @@ ingress:
   tls: false
   annotations: {}
 
+config:
+  enableGPU: false
+
 controller:
   images: 
     yolo: dprl/yolov8server:latest

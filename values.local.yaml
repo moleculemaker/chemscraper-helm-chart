@@ -1,3 +1,9 @@
 ingress:
-  ingressClassName: nginx
+  ingressClassName: traefik
+#  ingressClassName: nginx
 
+controller:
+  images:
+    yolo: dprl/yolov8server:latest
+    symbolscraper: dprl/symbolscraper-server:latest
+    chemscraper: dprl/chemscraper:staging

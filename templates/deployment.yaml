@@ -15,6 +15,12 @@ spec:
       labels:
         app: chemscraper
     spec:
+{{- if .Values.config.enableGPU | default false }}
+      tolerations:
+      - effect: NoSchedule
+        key: nvidia.com/gpu
+        operator: Exists
+{{- end }}
       containers:
         - name: chemscraper
           image: {{ .Values.controller.images.chemscraper }}
