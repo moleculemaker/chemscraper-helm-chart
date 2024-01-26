@@ -15,12 +15,6 @@ spec:
       labels:
         app: chemscraper
     spec:
-{{- if .Values.config.enableGPU | default false }}
-      tolerations:
-      - effect: NoSchedule
-        key: nvidia.com/gpu
-        operator: Exists
-{{- end }}
       containers:
         - name: chemscraper
           image: {{ .Values.controller.images.chemscraper }}
@@ -32,6 +26,11 @@ spec:
             value: {{ .Release.Name }}.{{ .Release.Namespace }}.svc.cluster.local
           ports:
             - containerPort: 8000
+        - name: symbolscraper
+          image: {{ .Values.controller.images.symbolscraper }}
+          imagePullPolicy: {{ .Values.controller.imagePullPolicy | default "Always" }}
+          ports:
+            - containerPort: 7002
         - name: yolo
           image: {{ .Values.controller.images.yolo }}
           imagePullPolicy: {{ .Values.controller.imagePullPolicy | default "Always" }}
@@ -41,11 +40,8 @@ spec:
           resources:
             limits:
               nvidia.com/gpu: "1"
-            requests:
-              nvidia.com/gpu: "1"
+      tolerations:
+      - effect: NoSchedule
+        key: nvidia.com/gpu
+        operator: Exists
 {{- end }}
-        - name: symbolscraper
-          image: {{ .Values.controller.images.symbolscraper }}
-          imagePullPolicy: {{ .Values.controller.imagePullPolicy | default "Always" }}
-          ports:
-            - containerPort: 7002
