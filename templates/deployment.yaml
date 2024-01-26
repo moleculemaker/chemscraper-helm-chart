@@ -24,7 +24,7 @@ spec:
       containers:
         - name: chemscraper
           image: {{ .Values.controller.images.chemscraper }}
-          imagePullPolicy: {{ .Values.controller.imagePullPolicy | default Always }}
+          imagePullPolicy: {{ .Values.controller.imagePullPolicy | default "Always" }}
           env:
           - name: YOLO_SERVER_NAME
             value: {{ .Release.Name }}.{{ .Release.Namespace }}.svc.cluster.local
@@ -34,7 +34,7 @@ spec:
             - containerPort: 8000
         - name: yolo
           image: {{ .Values.controller.images.yolo }}
-          imagePullPolicy: {{ .Values.controller.imagePullPolicy | default Always }}
+          imagePullPolicy: {{ .Values.controller.imagePullPolicy | default "Always" }}
           ports:
             - containerPort: 8005
 {{- if .Values.config.enableGPU | default false }}
@@ -46,6 +46,6 @@ spec:
 {{- end }}
         - name: symbolscraper
           image: {{ .Values.controller.images.symbolscraper }}
-          imagePullPolicy: {{ .Values.controller.imagePullPolicy | default Always }}
+          imagePullPolicy: {{ .Values.controller.imagePullPolicy | default "Always" }}
           ports:
             - containerPort: 7002
