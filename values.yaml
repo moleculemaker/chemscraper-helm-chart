@@ -7,6 +7,7 @@ config:
   enableGPU: false
 
 controller:
+  imagePullPolicy: Always
   images: 
     yolo: dprl/yolov8server:latest
     symbolscraper: dprl/symbolscraper-server:latest
