@@ -11,3 +11,5 @@ controller:
   images: 
     chemscraper: dprl/chemscraper:staging
 
+config:
+  enableGPU: true
