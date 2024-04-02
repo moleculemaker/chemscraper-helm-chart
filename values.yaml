@@ -11,12 +11,12 @@ controller:
   images: 
     yolo: dprl/yolov8server:latest
     symbolscraper: dprl/symbolscraper-server:latest
-    chemscraper: dprl/chemscraper:v0.1-icdar2024
+    chemscraper: dprl/chemscraper:staging_v0.2.1
 
     # DEV IMAGE NAMES
     #chemscraper: dprl/chemscraper:staging
 
-    # USTABLE IMAGE NAMES
+    # UNSTABLE IMAGE NAMES
     #chemscraper: dprl/chemscraper:latest
 
     # LEGACY IMAGE NAMES
@@ -24,12 +24,5 @@ controller:
     #chemscraper: dprl/chemscraper:json
   
 
-# TODO: config for GPU support
-    #deploy:
-    #  resources:
-    #    reservations:
-    #      devices
-    #        - driver: nvidia
-    #          capabilities: [gpu]
 
 
