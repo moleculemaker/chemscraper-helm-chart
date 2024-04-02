@@ -41,6 +41,8 @@ spec:
           #resources:
           #  limits:
           #    nvidia.com/gpu: "1"
+      nodeSelector:
+        ncsa.role: worker-gpu
       tolerations:
       - effect: NoSchedule
         key: nvidia.com/gpu
