@@ -41,8 +41,11 @@ spec:
           #resources:
           #  limits:
           #    nvidia.com/gpu: "1"
-      nodeSelector:
-        ncsa.role: worker-gpu
+      node_affinity_required:
+      - matchExpressions:
+        - key: nvidia.com/gpu.present
+          operator: In
+          values: ["true"]
       tolerations:
       - effect: NoSchedule
         key: nvidia.com/gpu
