@@ -12,6 +12,7 @@ controller:
     yolo: dprl/yolov8server:latest
     symbolscraper: dprl/symbolscraper-server:latest
     chemscraper: dprl/chemscraper:staging_v0.2.1
+    qdgga: dprl/qdgga:latest
 
     # DEV IMAGE NAMES
     #chemscraper: dprl/chemscraper:staging
