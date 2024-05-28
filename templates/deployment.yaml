@@ -35,6 +35,8 @@ spec:
             value: {{ .Release.Name }}.{{ .Release.Namespace }}.svc.cluster.local
           - name: SSCRAPER_SERVER_NAME
             value: {{ .Release.Name }}.{{ .Release.Namespace }}.svc.cluster.local
+          - name: QDGGA_SERVER_NAME
+            value: {{ .Release.Name }}.{{ .Release.Namespace }}.svc.cluster.local
           ports:
             - containerPort: 8000
         - name: symbolscraper
