@@ -35,6 +35,8 @@ spec:
             value: {{ .Release.Name }}.{{ .Release.Namespace }}.svc.cluster.local
           - name: SSCRAPER_SERVER_NAME
             value: {{ .Release.Name }}.{{ .Release.Namespace }}.svc.cluster.local
+          - name: QDGGA_SERVER_NAME
+            value: {{ .Release.Name }}.{{ .Release.Namespace }}.svc.cluster.local
           ports:
             - containerPort: 8000
         - name: symbolscraper
@@ -47,6 +49,11 @@ spec:
           imagePullPolicy: {{ .Values.controller.imagePullPolicy | default "Always" }}
           ports:
             - containerPort: 8005
+        - name: qdgga
+          image: {{ .Values.controller.images.qdgga }}
+          imagePullPolicy: {{ .Values.controller.imagePullPolicy | default "Always" }}
+          ports:
+            - containerPort: 8007
 {{- if .Values.config.enableGPU | default false }}
           # If we set limits, then only this container can mount the GPU - exclude this to use for both prod + staging
           #resources:
