@@ -12,7 +12,7 @@ controller:
     yolo: dprl/yolov8server:latest
     symbolscraper: dprl/symbolscraper-server:latest
     chemscraper: dprl/chemscraper:dev_v0.1.0
-    qdgga: dprl/qdgga:miniconda
+    lgap: dprl/lgap
 
     #chemscraper: dprl/chemscraper:staging_v0.2.1
 

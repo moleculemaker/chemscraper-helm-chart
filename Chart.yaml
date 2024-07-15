@@ -1,4 +1,4 @@
 apiVersion: v2
-description: "ChemScraper + YOLO + sscraper"
+description: "ChemScraper + YOLO + sscraper + LGAP"
 name: chemscraper
 version: 1.0.0

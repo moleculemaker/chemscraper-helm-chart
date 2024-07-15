@@ -14,7 +14,7 @@ spec:
     - {{ .Values.ingress.hostname }}
     - yolo.{{ .Values.ingress.hostname }}
     - symbolscraper.{{ .Values.ingress.hostname }}
-    - qdgga.{{ .Values.ingress.hostname }}
+    - lgap.{{ .Values.ingress.hostname }}
     secretName: {{ .Values.ingress.hostname }}-tls
 {{- end }}
 {{- if .Values.ingress.ingressClassName }}
@@ -51,7 +51,7 @@ spec:
               number: 7002
         path: /
         pathType: ImplementationSpecific
-  - host: qdgga.{{ .Values.ingress.hostname | required "required: ingress.hostname (e.g. chemscraper.backend.localhost)" }}
+  - host: lgap.{{ .Values.ingress.hostname | required "required: ingress.hostname (e.g. chemscraper.backend.localhost)" }}
     http:
       paths:
       - backend:

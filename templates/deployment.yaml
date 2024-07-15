@@ -35,7 +35,7 @@ spec:
             value: {{ .Release.Name }}.{{ .Release.Namespace }}.svc.cluster.local
           - name: SSCRAPER_SERVER_NAME
             value: {{ .Release.Name }}.{{ .Release.Namespace }}.svc.cluster.local
-          - name: QDGGA_SERVER_NAME
+          - name: LGAP_SERVER_NAME
             value: {{ .Release.Name }}.{{ .Release.Namespace }}.svc.cluster.local
           ports:
             - containerPort: 8000
@@ -49,8 +49,8 @@ spec:
           imagePullPolicy: {{ .Values.controller.imagePullPolicy | default "Always" }}
           ports:
             - containerPort: 8005
-        - name: qdgga
-          image: {{ .Values.controller.images.qdgga }}
+        - name: lgap
+          image: {{ .Values.controller.images.lgap }}
           imagePullPolicy: {{ .Values.controller.imagePullPolicy | default "Always" }}
           ports:
             - containerPort: 8007

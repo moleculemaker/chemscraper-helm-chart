@@ -19,7 +19,7 @@ spec:
       protocol: TCP
       port: 7002
       targetPort: 7002
-    - name: qddga
+    - name: lgap
       protocol: TCP
       port: 8007
       targetPort: 8007
