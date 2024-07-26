@@ -54,6 +54,12 @@ spec:
           imagePullPolicy: {{ .Values.controller.imagePullPolicy | default "Always" }}
           ports:
             - containerPort: 8007
+          env:
+            - name: NVIDIA_DRIVER_CAPABILITIES
+              value: "compute,utility"
+            - name: NVIDIA_VISIBLE_DEVICES
+              value: "all"
+          
 {{- if .Values.config.enableGPU | default false }}
           # If we set limits, then only this container can mount the GPU - exclude this to use for both prod + staging
           #resources:
