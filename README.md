@@ -27,10 +27,10 @@ $ helm upgrade --install chemscraper -n staging . -f values.local.yaml
 This will overwrite the configuration of the instance in your local cluster.
 
 You should then be able to access the following URLs:
-* Chemscraper: chemscraper.backend.localhost/docs
-* YOLO: yolo.chemscraper.backend.localhost/swagger-ui
-* Symbolscraper: symbolscraper.chemscraper.backend.localhost/docs
-* LGAP: lgap.chemscraper.backend.localhost/docs
+* Chemscraper: http://chemscraper.backend.localhost/docs
+* YOLO: http://yolo.chemscraper.backend.localhost/swagger-ui
+* Symbolscraper: http://symbolscraper.chemscraper.backend.localhost/docs
+* LGAP: http://lgap.chemscraper.backend.localhost/docs
 
 This example is currently configured to use the NGINX Ingress Controller, but you can adjust values.local.yaml to cahnge the ingress class.
 
