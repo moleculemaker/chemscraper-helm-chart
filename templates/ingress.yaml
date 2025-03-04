@@ -61,3 +61,23 @@ spec:
               number: 8007
         path: /
         pathType: ImplementationSpecific
+  - host: chemdataextractorapi.{{ .Values.ingress.hostname | required "required: ingress.hostname (e.g. chemscraper.backend.localhost)" }}
+    http:
+      paths:
+      - backend:
+          service:
+            name: {{ .Release.Name }}
+            port:
+              number: 8012
+        path: /
+        pathType: ImplementationSpecific
+  - host: reactionminersearch.{{ .Values.ingress.hostname | required "required: ingress.hostname (e.g. chemscraper.backend.localhost)" }}
+    http:
+      paths:
+      - backend:
+          service:
+            name: {{ .Release.Name }}
+            port:
+              number: 8013
+        path: /
+        pathType: ImplementationSpecific

@@ -59,6 +59,16 @@ spec:
               value: "compute,utility"
             - name: NVIDIA_VISIBLE_DEVICES
               value: "all"
+        - name: chemdataextractorapi
+          image: {{ .Values.controller.images.chemdataextractorapi }}
+          imagePullPolicy: {{ .Values.controller.imagePullPolicy | default "Always" }}
+          ports:
+            - containerPort: 8012
+        - name: reactionminer_search
+          image: {{ .Values.controller.images.reactionminer_search }}
+          imagePullPolicy: {{ .Values.controller.imagePullPolicy | default "Always" }}
+          ports:
+            - containerPort: 8013
           
 {{- if .Values.config.enableGPU | default false }}
           # If we set limits, then only this container can mount the GPU - exclude this to use for both prod + staging

@@ -11,8 +11,10 @@ controller:
   images: 
     yolo: dprl/yolov8server:latest
     symbolscraper: dprl/symbolscraper-server:latest
-    chemscraper: dprl/chemscraper:dev_v0.3.1
+    chemscraper: dprl/chemscraper:dev_v0.4.0
     lgap: dprl/lgap:latest
+    reactionminer_search: dprl/reactionminer_search:dev
+    chemdataextractorapi: sprl/chemdataextractorapi:dev
 
     #chemscraper: dprl/chemscraper:staging_v0.2.1
 
