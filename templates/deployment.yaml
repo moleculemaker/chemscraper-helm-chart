@@ -68,6 +68,11 @@ spec:
           imagePullPolicy: {{ .Values.controller.imagePullPolicy | default "Always" }}
           ports:
             - containerPort: 8012
+          env:
+            - name: NVIDIA_DRIVER_CAPABILITIES
+              value: "compute,utility"
+            - name: NVIDIA_VISIBLE_DEVICES
+              value: "all"
         - name: reactionminersearch
           image: {{ .Values.controller.images.reactionminer_search }}
           imagePullPolicy: {{ .Values.controller.imagePullPolicy | default "Always" }}
