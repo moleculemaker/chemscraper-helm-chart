@@ -15,6 +15,8 @@ spec:
     - yolo.{{ .Values.ingress.hostname }}
     - symbolscraper.{{ .Values.ingress.hostname }}
     - lgap.{{ .Values.ingress.hostname }}
+    - chemdataextractorapi.{{ .Values.ingress.hostname }}
+    - reactionminersearch.{{ .Values.ingress.hostname }}
     secretName: {{ .Values.ingress.hostname }}-tls
 {{- end }}
 {{- if .Values.ingress.ingressClassName }}
@@ -59,5 +61,25 @@ spec:
             name: {{ .Release.Name }}
             port:
               number: 8007
+        path: /
+        pathType: ImplementationSpecific
+  - host: chemdataextractorapi.{{ .Values.ingress.hostname | required "required: ingress.hostname (e.g. chemscraper.backend.localhost)" }}
+    http:
+      paths:
+      - backend:
+          service:
+            name: {{ .Release.Name }}
+            port:
+              number: 8012
+        path: /
+        pathType: ImplementationSpecific
+  - host: reactionminersearch.{{ .Values.ingress.hostname | required "required: ingress.hostname (e.g. chemscraper.backend.localhost)" }}
+    http:
+      paths:
+      - backend:
+          service:
+            name: {{ .Release.Name }}
+            port:
+              number: 8013
         path: /
         pathType: ImplementationSpecific

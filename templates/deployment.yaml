@@ -37,6 +37,10 @@ spec:
             value: {{ .Release.Name }}.{{ .Release.Namespace }}.svc.cluster.local
           - name: LGAP_SERVER_NAME
             value: {{ .Release.Name }}.{{ .Release.Namespace }}.svc.cluster.local
+          - name: REACTIONMINERSEARCH_SERVER_NAME
+            value: {{ .Release.Name }}.{{ .Release.Namespace }}.svc.cluster.local
+          - name: CHEMDATAEXTRACTORAPI_SERVER_NAME
+            value: {{ .Release.Name }}.{{ .Release.Namespace }}.svc.cluster.local
           ports:
             - containerPort: 8000
         - name: symbolscraper
@@ -59,6 +63,21 @@ spec:
               value: "compute,utility"
             - name: NVIDIA_VISIBLE_DEVICES
               value: "all"
+        - name: chemdataextractorapi
+          image: {{ .Values.controller.images.chemdataextractorapi }}
+          imagePullPolicy: {{ .Values.controller.imagePullPolicy | default "Always" }}
+          ports:
+            - containerPort: 8012
+          env:
+            - name: NVIDIA_DRIVER_CAPABILITIES
+              value: "compute,utility"
+            - name: NVIDIA_VISIBLE_DEVICES
+              value: "all"
+        - name: reactionminersearch
+          image: {{ .Values.controller.images.reactionminer_search }}
+          imagePullPolicy: {{ .Values.controller.imagePullPolicy | default "Always" }}
+          ports:
+            - containerPort: 8013
           
 {{- if .Values.config.enableGPU | default false }}
           # If we set limits, then only this container can mount the GPU - exclude this to use for both prod + staging

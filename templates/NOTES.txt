@@ -3,4 +3,6 @@ Application is now running!
 Access http{{- if .Values.ingress.tls }}s{{- end }}://{{ .Values.ingress.hostname }}/docs to access chemscraper
 Access http{{- if .Values.ingress.tls }}s{{- end }}://yolo.{{ .Values.ingress.hostname }}/swagger-ui to access yolo
 Access http{{- if .Values.ingress.tls }}s{{- end }}://symbolscraper.{{ .Values.ingress.hostname }}/docs to access symbolscraper
-Access http{{- if .Values.ingress.tls }}s{{- end }}://qdgga.{{ .Values.ingress.hostname }}/docs to access qdgga
+Access http{{- if .Values.ingress.tls }}s{{- end }}://lgap.{{ .Values.ingress.hostname }}/docs to access LGAP
+Access http{{- if .Values.ingress.tls }}s{{- end }}://chemdataextractorapi.{{ .Values.ingress.hostname }}/docs to access chemdataextractorapi
+Access http{{- if .Values.ingress.tls }}s{{- end }}://reactionminersearch.{{ .Values.ingress.hostname }}/docs to access reactionminer_search

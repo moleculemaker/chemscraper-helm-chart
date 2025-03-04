@@ -23,3 +23,11 @@ spec:
       protocol: TCP
       port: 8007
       targetPort: 8007
+    - name: chemdataextractorapi
+      protocol: TCP
+      port: 8012
+      targetPort: 8012
+    - name: reactionminersearch
+      protocol: TCP
+      port: 8013
+      targetPort: 8013
