@@ -14,7 +14,7 @@ controller:
     chemscraper: dprl/chemscraper:dev_v0.4.0
     lgap: dprl/lgap:latest
     reactionminer_search: dprl/reactionminer_search:dev
-    chemdataextractorapi: sprl/chemdataextractorapi:dev
+    chemdataextractorapi: dprl/chemdataextractorapi:dev
 
     #chemscraper: dprl/chemscraper:staging_v0.2.1
 
