@@ -64,7 +64,7 @@ spec:
           imagePullPolicy: {{ .Values.controller.imagePullPolicy | default "Always" }}
           ports:
             - containerPort: 8012
-        - name: reactionminer_search
+        - name: reactionminersearch
           image: {{ .Values.controller.images.reactionminer_search }}
           imagePullPolicy: {{ .Values.controller.imagePullPolicy | default "Always" }}
           ports:
