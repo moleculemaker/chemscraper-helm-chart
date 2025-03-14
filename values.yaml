@@ -6,6 +6,9 @@ ingress:
 config:
   enableGPU: false
 
+volumes:
+  existingClaim: mmli-chemscraper-index
+
 controller:
   imagePullPolicy: Always
   images: 

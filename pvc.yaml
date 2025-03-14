@@ -1,0 +1,24 @@
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: mmli-chemscraper-index
+
+  #namespace: mmli              # Local cluster
+  #namespace: staging           # Staging
+  #namespace: alphasynthesis    # Production
+spec:
+  # Request a RWM volume
+  accessModes:
+    - ReadWriteMany
+
+  # from the NFS storage
+  storageClassName: nfs-taiga
+
+  # Size is ignored for NFS
+  resources:
+    requests:
+      storage: 10Gi
+
+
+
