@@ -6,12 +6,15 @@ ingress:
 config:
   enableGPU: false
 
+volumes:
+  existingClaim: mmli-chemscraper-index
+
 controller:
   imagePullPolicy: Always
   images: 
     yolo: dprl/yolov8server:latest
     symbolscraper: dprl/symbolscraper-server:latest
-    chemscraper: dprl/chemscraper:dev_v0.4.0
+    chemscraper: dprl/chemscraper:dev_v0.4.1
     lgap: dprl/lgap:latest
     reactionminer_search: dprl/reactionminer_search:dev
     chemdataextractorapi: dprl/chemdataextractorapi:dev

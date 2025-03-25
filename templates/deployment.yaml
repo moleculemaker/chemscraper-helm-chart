@@ -26,6 +26,10 @@ spec:
                     values:
                       - 'true'
 {{- end }}
+      volumes:
+        - name: chemscraperindex
+          persistentVolumeClaim:
+            claimName: {{ .Values.volumes.existingClaim }}
       containers:
         - name: chemscraper
           image: {{ .Values.controller.images.chemscraper }}
@@ -43,6 +47,10 @@ spec:
             value: {{ .Release.Name }}.{{ .Release.Namespace }}.svc.cluster.local
           ports:
             - containerPort: 8000
+          volumeMounts:
+            - name: chemscraperindex
+              mountPath: /matching_files
+              subPath: matching_files
         - name: symbolscraper
           image: {{ .Values.controller.images.symbolscraper }}
           imagePullPolicy: {{ .Values.controller.imagePullPolicy | default "Always" }}
@@ -78,6 +86,10 @@ spec:
           imagePullPolicy: {{ .Values.controller.imagePullPolicy | default "Always" }}
           ports:
             - containerPort: 8013
+          volumeMounts:
+            - name: chemscraperindex
+              mountPath: /index_store
+              subPath: index_store
           
 {{- if .Values.config.enableGPU | default false }}
           # If we set limits, then only this container can mount the GPU - exclude this to use for both prod + staging
