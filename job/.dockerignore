@@ -1,0 +1,16 @@
+# Git metadata
+.git/
+.gitignore
+.github/
+
+# Docker metadata
+.env
+docker-compose.yml
+Dockerfile
+
+# This stuff doesn't end up in the container
+#chemscraper/
+README.md
+inputs/
+outputs/
+
