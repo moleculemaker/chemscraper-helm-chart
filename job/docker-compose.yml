@@ -1,0 +1,25 @@
+services:
+  chemscraper:
+    # Image / Build Parameters
+    #   =>  docker build -t moleculemaker/chemscraper-job:latest .
+    image: moleculemaker/chemscraper-job:latest
+    build:
+      context: .
+    
+    # Container / Runtime Parameters
+    #   =>  docker run -ti --name chemscraper-job sleep 3600s
+    container_name: chemscraper-job
+    #stdin_open: true
+    #tty: true
+    #command: "sleep 3600s"
+
+    env_file:
+    - .env
+    
+    volumes:
+    # Map in input/output directories 
+    - ./inputs:/usr/app/inputs
+    - ./outputs:/usr/app/outputs
+
+    # Map in all source code for development
+    - .:/usr/app/

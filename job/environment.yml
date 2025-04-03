@@ -1,0 +1,29 @@
+name: chemscraper
+channels:
+  - conda-forge
+dependencies:
+  # RDKit dependencies
+#  - cmake
+#  - cairo
+#  - pillow
+#  - eigen
+#  - pkg-config
+#  - boost-cpp
+#  - boost
+#  - py-boost
+#  - gxx_linux-64
+  - rdkit=2024.9.6
+
+  - pip
+  - pip:
+      # Generate ChemScraper API client
+      - openapi-python-client
+
+      # ChemScraper client dependencies
+      - pydantic==2.11.1
+      - pandas
+      - attrs==25.3.0
+      - httpx==0.28.1
+
+      # External requests to PubChem
+      - requests
