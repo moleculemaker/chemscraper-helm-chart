@@ -228,7 +228,7 @@ def write_results_csv(tsv_content: bytes):
     csv_data = csv_buffer.getvalue().encode('utf-8')
 
     # Write result CSV file
-    output_path = f"/{CHEMSCRAPER_OUTPUT_DIR}/{JOB_ID}-results.csv"
+    output_path = f"{CHEMSCRAPER_OUTPUT_DIR}/{JOB_ID}-results.csv"
     with open(output_path, "wb") as f:
         logger.info(f"Writing CSV result file contents: {output_path}")
         f.write(csv_data)

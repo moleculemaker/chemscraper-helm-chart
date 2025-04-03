@@ -41,6 +41,10 @@ def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
 ) -> Optional[Union[Any, HTTPValidationError]]:
     if response.status_code == 200:
+        # FIXME: We needed to manually change this line of the generated code
+        # FIXME: Can we tell FastAPI that this endpoint does not return JSON?
+        # response_200 = response.json()
+        # response_200 = cast(Any, None)
         response_200 = response
         return response_200
     if response.status_code == 422:
