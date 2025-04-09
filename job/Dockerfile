@@ -1,4 +1,8 @@
 FROM mambaorg/micromamba:alpine
+
+# FIXME: Temporary workaround for NFS file permissions issues
+USER root
+
 WORKDIR /usr/app/
 
 # Use a drop-in for conda executable
