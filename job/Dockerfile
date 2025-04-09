@@ -14,6 +14,11 @@ SHELL [ "${CONDA}", "run", "-n", "base" ]
 #COPY generate-client.sh .
 #RUN ./generate-client.sh
 
+# Supporting Python files
+COPY chemscraper ./chemscraper
+COPY models ./models
+COPY services ./services
+
 # Entrypoint script
 COPY run_chemscraper.py .
 CMD [ "python", "./run_chemscraper.py" ]
