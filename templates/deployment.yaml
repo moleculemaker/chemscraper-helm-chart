@@ -15,6 +15,9 @@ spec:
       labels:
         app: chemscraper
     spec:
+{{- if .Values.config.runtimeClassName | default false }}
+      runtimeClassName: {{ .Values.config.runtimeClassName }}
+{{- end }}
 {{- if .Values.config.enableGPU | default false }}
       affinity:
         nodeAffinity:
