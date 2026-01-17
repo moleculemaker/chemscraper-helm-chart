@@ -29,9 +29,14 @@ LOG_LEVEL = os.getenv('LOG_LEVEL', 'INFO')
 logger = logging.getLogger('run_chemscraper')
 logger.setLevel(LOG_LEVEL)
 
+# Unique identifier for each job
+JOB_ID = os.getenv('JOB_ID')
+JOB_INPUT_DIR = os.getenv('JOB_INPUT_DIR', '/usr/app/inputs')
+JOB_OUTPUT_DIR = os.getenv('JOB_OUTPUT_DIR', '/usr/app/outputs')
+
 # Path to input PDFs for RM+CS
 # Files in this path will be automatically downloaded from MinIO before running the AlphaSynthesis job
-CHEMSCRAPER_INPUT_FILE = os.getenv('CHEMSCRAPER_INPUT_FILE', '/usr/app/inputs/or100.09.tables.small.pdf')
+CHEMSCRAPER_INPUT_FILE = os.getenv('CHEMSCRAPER_INPUT_FILE')
 
 # Path to output from full RM+CS workflow
 # We store to the same path as ReactionMiner outputs, so that this is also uploaded to MinIO
@@ -41,8 +46,6 @@ CHEMSCRAPER_OUTPUT_DIR = os.getenv('CHEMSCRAPER_OUTPUT_DIR', '/usr/app/outputs')
 # We will override this default in production
 CHEMSCRAPER_BASE_URL = os.getenv('CHEMSCRAPER_BASE_URL', 'http://chemscraper-services-staging.staging.svc.cluster.local:8000')
 
-# Unique identifier for each job
-JOB_ID = os.getenv('JOB_ID')
 
 
 # Shared services that we borrowed from mmli-backend
@@ -52,6 +55,7 @@ rdkitService = RDKitService()
 
 # Submit input PDF file to Chemscraper API
 def submit_to_chemscraper(pdf_file):
+    pdf_full_path = os.path.join(JOB_INPUT_DIR, pdf_file)
     # Create a new ChemScraper API client and submit the
     # PDF + JSON files and the mapping that links them
     with Client(base_url=CHEMSCRAPER_BASE_URL) as client:
@@ -61,7 +65,7 @@ def submit_to_chemscraper(pdf_file):
             body=BodyExtractPdfPost(
                 pdf=File(
                     file_name=pdf_file.split(os.path.sep)[-1],
-                    payload=read_file_bytes(pdf_file),
+                    payload=read_file_bytes(pdf_full_path),
                     mime_type='application/pdf'
                 )
             )
@@ -241,8 +245,9 @@ def write_results_csv(tsv_content: bytes):
 # (error code = 0 indicates success)
 if __name__ == "__main__":
     logger.info(f'Submitting these files to ChemScraper')
-    logger.info(f'        Input Dir:  {CHEMSCRAPER_INPUT_FILE}')
-    logger.info(f'       Output Dir:  {CHEMSCRAPER_OUTPUT_DIR}')
+    logger.info(f'        Input Dir:  {JOB_INPUT_DIR}')
+    logger.info(f'       Input File:  {CHEMSCRAPER_INPUT_FILE}')
+    logger.info(f'       Output Dir:  {JOB_OUTPUT_DIR}')
     logger.info(f'  ChemScraper URL:  {CHEMSCRAPER_BASE_URL}')
 
     try:
